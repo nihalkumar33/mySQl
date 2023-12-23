@@ -1,0 +1,71 @@
+NOT NULL, 
+UNIQUE, primary_key, foreign_key, check, default, create index
+
+CREATE TABLE Customer (
+  id INT NOT NULL,
+  name VARCHAR(20) NOT NULL,
+  address VARCHAR(50) NOT NULL);
+  
+Note: If we will put null in the column with NOT NULL constraint then it won't accept.
+
+CREATE TABLE Customer (
+  id INT NOT NULL UNIQUE,
+  name VARCHAR(20) NOT NULL UNIQUE,
+  address VARCHAR(50) NOT NULL);
+
+Note: The unique is case sensetive
+
+CREATE TABLE Customer (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  address VARCHAR(50));
+
+
+CREATE TABLE Orders (
+id INT PRIMARY KEY,
+product VARCHAR(20) NOT NULL,
+c_id int REFERENCES Customers(customer_id),
+amount int CHECK (amount >= 100)
+);
+
+Here the amount column cannot insert values which are less than 100, because of check constraint
+NOTE: If we want to use REFRENCE to a  	
+
+INSERT INTO Orders VALUES 
+(123, "Thing", 1, 12000),
+(124, "Thing2", 2, 120);
+
+
+CREATE TABLE College 
+(id INT PRIMARY KEY,
+ code VARCHAR(20),
+ country VARCHAR(20) DEFAULT "US");
+
+Note: Here since we have used DEFAULT as US we neednot to insert the value in country column.
+      but to do so we are supposed to enter the column names by skipping that column name.
+INSERT INTO College (id, code) VALUES 
+(1001, "Code_1");
+
+Join in sql:
+inner join or join: A intersection B
+left join: A
+right join: B
+full outer join: A U B, Here all the data of table 1 and table 2 will bew displayed
+
+SELECT Customers.customer_id, Customers.first_name, Orders.item
+FROM Customers
+JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+Left joint:
+SELECT Customers.customer_id, Customers.first_name, Orders.item
+FROM Customers
+LEFT JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+SELECT Customers.customer_id, Customers.first_name, Orders.item, Orders.amount
+FROM Customers
+LEFT JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+
