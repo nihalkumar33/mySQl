@@ -68,4 +68,9 @@ FROM Customers
 LEFT JOIN Orders
 ON Customers.customer_id = Orders.customer_id;
 
-
+Project:
+table attributes(1)
+ER Diagram(1)
+Querrys(1)
+Execution(1)
+Creativity(1)
